@@ -25,7 +25,7 @@ python Main.py
 ## Usage
 run the `Main.py` file to start the recommendation system. The system will prompt you to enter your preferences for brand, price range, and style. Based on your input, the system will then recommend a list of luxury watches that match your preferences. You may then select one watch to learn more about it.
 
-![Recommendation System](images/Display.png)
+![Recommendation System](Images/Display.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
