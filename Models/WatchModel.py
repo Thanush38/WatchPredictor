@@ -1,16 +1,15 @@
 import inquirer
 import pandas as pd
-from tabulate import tabulate
-# Define a function to print the details of the selected watch
+
 def cleanPrint(CurrentWatch):
     for col in CurrentWatch:
         if CurrentWatch[col].values[0] != "nan":
             print(col + ": ", CurrentWatch[col].values[0])
 
 
-def readWatch():
+def PredictWatch():
     # Load watch dataset from a CSV file into a pandas DataFrame
-    watches = pd.read_csv("WatchDataset.csv")
+    watches = pd.read_csv("Data/WatchDataset.csv")
 
     # Clean the 'Price (USD)' column by removing '$' and ',' and converting it to a float
     watches['Price (USD)'] = watches['Price (USD)'].replace({'\$': '', ',': ''}, regex=True)
@@ -76,10 +75,9 @@ def readWatch():
     answers = inquirer.prompt(questions)
 
     # Create a new column for the brand and model combination and select the chosen watch
-    moveWatches['Brand_Model'] = moveWatches.apply(lambda row: f"{row['Brand']} {row['Model']}", axis=1)
-    selectedWatch = moveWatches[moveWatches['Brand_Model'] == answers["Learn"]]
+    moveWatches['Full Name'] = moveWatches.apply(lambda row: f"{row['Brand']} {row['Model']}", axis=1)
+    selectedWatch = moveWatches[moveWatches['Full Name'] == answers["Learn"]]
 
     # Print the details of the selected watch (first row)
     cleanPrint(selectedWatch.head(1))
 
-readWatch()
